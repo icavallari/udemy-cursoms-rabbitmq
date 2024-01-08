@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: cursoms-cloudgateway
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+        lower-case-service-id: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/mscursorealm
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://cursoms-eureka-user:906d375e26a1efb9696854c58177c58eb3bc946a6199b77375c08612ce6579fd@localhost:8761/eureka

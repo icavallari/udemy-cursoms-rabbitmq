@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: cursoms-cartoes
+  rabbitmq:
+    host: ${RABBITMQ_SERVER}
+    port: 5672
+    username: guest
+    password: guest
+
+  #https://www.baeldung.com/spring-boot-h2-database
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://cursoms-eureka-user:906d375e26a1efb9696854c58177c58eb3bc946a6199b77375c08612ce6579fd@${EUREKA_SERVER}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    emissao-cartoes: emissao-cartoes
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  file:
+    name: ./logs/log-file.log
